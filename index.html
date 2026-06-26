@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nova Travel Updates</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #030303;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+  }
+
+  .page {
+    width: 100vw;
+    height: 100vh;
+    padding: 38px 48px;
+    box-sizing: border-box;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 250px 1fr 220px;
+    align-items: start;
+    margin-bottom: 42px;
+  }
+
+  .logo {
+    width: 210px;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .title h1 {
+    margin: 0;
+    font-size: 62px;
+    letter-spacing: 6px;
+    font-weight: 700;
+  }
+
+  .title p {
+    margin: 16px 0 0;
+    font-size: 24px;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  .time {
+    text-align: right;
+    font-size: 46px;
+  }
+
+  .date {
+    margin-top: 10px;
+    font-size: 22px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px;
+  }
+
+  .card {
+    height: 260px;
+    background: linear-gradient(180deg, #121212, #070707);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 28px;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .line-name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 34px;
+  }
+
+  .status {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 26px;
+  }
+
+  .reason {
+    font-size: 20px;
+    line-height: 1.35;
+    color: #ffffff;
+  }
+
+  .good { color: #6fd142; }
+  .minor { color: #ff9900; }
+  .bad { color: #ff3131; }
+
+  .updated {
+    position: absolute;
+    right: 50px;
+    bottom: 28px;
+    font-size: 18px;
+    color: #cfcfcf;
+  }
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <div class="top">
+    <img src="nova-logo.jpg" class="logo">
+
+    <div class="title">
+      <h1>LIVE TRAVEL UPDATES</h1>
+      <p>TfL line status near Victoria</p>
+    </div>
+
+    <div class="time">
+      <div id="clock"></div>
+      <div class="date" id="date"></div>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">Loading...</div>
+
+  <div class="updated" id="updated"></div>
+</div>
+
+<script>
+const apiKey = "eb7cd0f940d74276a1db4f947b783c7a";
+
+const lines = [
+  "victoria",
+  "circle",
+  "district",
+  "jubilee",
+  "elizabeth",
+  "dlr",
+  "london-overground",
+  "hammersmith-city",
+  "waterloo-city",
+  "central"
+];
+
+const lineColours = {
+  "victoria": "#0098D4",
+  "circle": "#FFD300",
+  "district": "#00782A",
+  "jubilee": "#A0A5A9",
+  "elizabeth": "#6950A1",
+  "dlr": "#00A4A7",
+  "london-overground": "#EE7C0E",
+  "hammersmith-city": "#F3A9BB",
+  "waterloo-city": "#76D0BD",
+  "central": "#E32017"
+};
+
+const severityRank = {
+  "Good Service": 1,
+  "Minor Delays": 2,
+  "Reduced Service": 3,
+  "Severe Delays": 4,
+  "Part Suspended": 5,
+  "Suspended": 6,
+  "Service Closed": 6
+};
+
+function statusClass(status) {
+  if (status === "Good Service") return "good";
+  if (status === "Minor Delays" || status === "Reduced Service") return "minor";
+  return "bad";
+}
+
+function cleanReason(reason) {
+  if (!reason) return "All good across the line";
+  return reason
+    .replace(/^[A-Z &]+ LINE:\s?/i, "")
+    .replace(/^[A-Za-z &]+ Line:\s?/i, "")
+    .slice(0, 105) + "...";
+}
+
+async function loadTfL() {
+  const url = `https://api.tfl.gov.uk/Line/${lines.join(",")}/Status?app_key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+
+    data.forEach(line => {
+      const statuses = line.lineStatuses || [];
+      const worst = statuses.sort((a, b) =>
+        (severityRank[b.statusSeverityDescription] || 0) -
+        (severityRank[a.statusSeverityDescription] || 0)
+      )[0];
+
+      const status = worst?.statusSeverityDescription || "Status unavailable";
+      const reason = cleanReason(worst?.reason);
+      const colour = lineColours[line.id] || "#ffffff";
+
+      grid.innerHTML += `
+        <div class="card">
+          <div class="bar" style="background:${colour}"></div>
+          <div class="line-name">${line.name}</div>
+          <div class="status ${statusClass(status)}">${status}</div>
+          <div class="reason">${reason}</div>
+        </div>
+      `;
+    });
+
+    document.getElementById("updated").innerText =
+      "Updated " + new Date().toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+
+  } catch {
+    document.getElementById("grid").innerHTML = "Unable to load TfL updates.";
+  }
+}
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").innerText =
+    now.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+
+  document.getElementById("date").innerText =
+    now.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    });
+}
+
+loadTfL();
+updateClock();
+
+setInterval(loadTfL, 120000);
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
