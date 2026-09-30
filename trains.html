@@ -21,7 +21,7 @@ html, body {
 }
 
 body {
-    font-family: "Courier New", Courier, monospace;
+    font-family: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
     color: #f5ad18;
 }
 
@@ -169,10 +169,26 @@ body {
 ========================================================= */
 
 .led {
-    color: #f5ad18;
-    text-shadow:
-        0 0 2px rgba(245,173,24,.85),
-        0 0 7px rgba(245,173,24,.20);
+    color: #f6ad16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 188, 45, 1) 0px,
+            rgba(255, 174, 20, 1) 1.1px,
+            transparent 1.4px
+        );
+
+    background-size: 4px 4px;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(0 0 1px rgba(255,174,20,.7))
+        drop-shadow(0 0 4px rgba(255,174,20,.12));
 }
 
 
