@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nova | London Victoria Departures</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050606;
+}
+
+body {
+    font-family: "Courier New", Courier, monospace;
+    color: #f5ad18;
+}
+
+/* =========================================================
+   SCREEN
+========================================================= */
+
+.board {
+    width: 100vw;
+    height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, #151616 0%, #080909 42%, #030404 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   NOVA HEADER
+========================================================= */
+
+.topbar {
+    height: 15vh;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    padding: 0 4vw;
+    border-bottom: 1px solid #7d7d7d;
+}
+
+.logo {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   DEPARTURES TITLE
+========================================================= */
+
+.departures-header {
+    height: 18vh;
+    min-height: 145px;
+    display: flex;
+    align-items: center;
+    padding: 0 4vw;
+    border-bottom: 1px solid #686868;
+}
+
+.train-icon {
+    width: 120px;
+    min-width: 120px;
+    font-size: 72px;
+    text-align: center;
+    padding-right: 35px;
+    border-right: 1px solid #8b8b8b;
+}
+
+.heading {
+    padding-left: 45px;
+}
+
+.heading h1 {
+    margin: 0;
+    font-size: clamp(44px, 4.2vw, 82px);
+    line-height: 0.95;
+    letter-spacing: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.heading h2 {
+    margin: 13px 0 0;
+    font-size: clamp(24px, 2.2vw, 43px);
+    letter-spacing: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DEPARTURE TABLE
+========================================================= */
+
+.departure-table {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.table-header,
+.service {
+    display: grid;
+    grid-template-columns: 15% 47% 14% 24%;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+.table-header {
+    height: 6vh;
+    min-height: 52px;
+    background: #151616;
+    border-bottom: 1px solid #555;
+    font-size: clamp(20px, 1.7vw, 34px);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.services {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service {
+    flex: 1;
+    min-height: 0;
+    border-bottom: 1px solid #242626;
+    font-size: clamp(26px, 2.5vw, 49px);
+    font-weight: bold;
+    line-height: 1;
+}
+
+.service:nth-child(odd) {
+    background: rgba(255,255,255,0.012);
+}
+
+.destination {
+    padding-left: 4px;
+}
+
+.platform {
+    text-align: center;
+}
+
+.expected {
+    padding-left: 25px;
+}
+
+
+/* =========================================================
+   AMBER LED EFFECT
+========================================================= */
+
+.led {
+    color: #f5ad18;
+    text-shadow:
+        0 0 2px rgba(245,173,24,.85),
+        0 0 7px rgba(245,173,24,.20);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    height: 8vh;
+    min-height: 65px;
+    padding: 0 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #777;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-note {
+    color: #d59617;
+    font-size: clamp(13px, 1.15vw, 22px);
+}
+
+.attribution {
+    color: #d8d8d8;
+    font-size: clamp(12px, 1vw, 19px);
+    opacity: .85;
+}
+
+
+/* =========================================================
+   SMALLER SCREENS
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .topbar {
+        min-height: 90px;
+    }
+
+    .logo {
+        height: 55px;
+    }
+
+    .departures-header {
+        min-height: 120px;
+    }
+
+    .train-icon {
+        width: 90px;
+        min-width: 90px;
+        font-size: 55px;
+    }
+
+    .heading {
+        padding-left: 30px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="board">
+
+
+    <!-- NOVA LOGO -->
+
+    <header class="topbar">
+        <img class="logo" src="nova-logo.jpg" alt="Nova London SW1">
+    </header>
+
+
+    <!-- TITLE -->
+
+    <section class="departures-header">
+
+        <div class="train-icon led">
+            🚆
+        </div>
+
+        <div class="heading led">
+            <h1>Departures</h1>
+            <h2>London Victoria</h2>
+        </div>
+
+    </section>
+
+
+    <!-- DEPARTURES -->
+
+    <main class="departure-table">
+
+        <div class="table-header led">
+            <div>Due</div>
+            <div>Destination</div>
+            <div style="text-align:center;">Plat</div>
+            <div style="padding-left:25px;">Expected</div>
+        </div>
+
+
+        <div class="services" id="services">
+
+            <div class="service led">
+                <div>14:32</div>
+                <div class="destination">Orpington</div>
+                <div class="platform">5</div>
+                <div class="expected">On time</div>
+            </div>
+
+            <div class="service led">
+                <div>14:36</div>
+                <div class="destination">Brighton</div>
+                <div class="platform">16</div>
+                <div class="expected">On time</div>
+            </div>
+
+            <div class="service led">
+                <div>14:40</div>
+                <div class="destination">Sutton</div>
+                <div class="platform">10</div>
+                <div class="expected">14:44</div>
+            </div>
+
+            <div class="service led">
+                <div>14:44</div>
+                <div class="destination">Ramsgate</div>
+                <div class="platform">3</div>
+                <div class="expected">On time</div>
+            </div>
+
+            <div class="service led">
+                <div>14:48</div>
+                <div class="destination">East Grinstead</div>
+                <div class="platform">18</div>
+                <div class="expected">Cancelled</div>
+            </div>
+
+            <div class="service led">
+                <div>14:52</div>
+                <div class="destination">Dorking</div>
+                <div class="platform">11</div>
+                <div class="expected">On time</div>
+            </div>
+
+            <div class="service led">
+                <div>14:56</div>
+                <div class="destination">Littlehampton</div>
+                <div class="platform">15</div>
+                <div class="expected">On time</div>
+            </div>
+
+            <div class="service led">
+                <div>15:00</div>
+                <div class="destination">Sevenoaks</div>
+                <div class="platform">6</div>
+                <div class="expected">On time</div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-note">
+            Next departures from London Victoria. Platforms may change.
+        </div>
+
+        <div class="attribution">
+            Live information provided by National Rail
+        </div>
+
+    </footer>
+
+
+</div>
+
+</body>
+</html>
