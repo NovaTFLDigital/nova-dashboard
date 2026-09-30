@@ -187,7 +187,30 @@ body {
         drop-shadow(0 0 4px rgba(255,174,20,.12));
 }
 
+/* LED EFFECT FOR EACH DEPARTURE CELL */
 
+.service > div {
+    color: #f6ad16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 188, 45, 1) 0px,
+            rgba(255, 174, 20, 1) 1.1px,
+            transparent 1.4px
+        );
+
+    background-size: 4px 4px;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(0 0 1px rgba(255,174,20,.7))
+        drop-shadow(0 0 4px rgba(255,174,20,.12));
+}
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -290,56 +313,56 @@ body {
 
         <div class="services" id="services">
 
-            <div class="service led">
+            <div class="service">
                 <div>14:32</div>
                 <div class="destination">Orpington</div>
                 <div class="platform">5</div>
                 <div class="expected">On time</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>14:36</div>
                 <div class="destination">Brighton</div>
                 <div class="platform">16</div>
                 <div class="expected">On time</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>14:40</div>
                 <div class="destination">Sutton</div>
                 <div class="platform">10</div>
                 <div class="expected">14:44</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>14:44</div>
                 <div class="destination">Ramsgate</div>
                 <div class="platform">3</div>
                 <div class="expected">On time</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>14:48</div>
                 <div class="destination">East Grinstead</div>
                 <div class="platform">18</div>
                 <div class="expected">Cancelled</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>14:52</div>
                 <div class="destination">Dorking</div>
                 <div class="platform">11</div>
                 <div class="expected">On time</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>14:56</div>
                 <div class="destination">Littlehampton</div>
                 <div class="platform">15</div>
                 <div class="expected">On time</div>
             </div>
 
-            <div class="service led">
+            <div class="service">
                 <div>15:00</div>
                 <div class="destination">Sevenoaks</div>
                 <div class="platform">6</div>
