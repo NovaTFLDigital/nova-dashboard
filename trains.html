@@ -193,7 +193,86 @@ body {
 .expected {
     padding-left: 25px;
 }
+/* =========================================================
+   GATWICK AIRPORT SHORTCUT
+========================================================= */
 
+.gatwick-shortcut {
+    height: 9vh;
+    min-height: 72px;
+
+    display: grid;
+    grid-template-columns: 7% 27% 18% 12% 7% 8% 21%;
+    align-items: center;
+
+    padding: 0 4vw;
+
+    border-top: 1px solid #d59617;
+
+    color: #f6ad16;
+}
+
+.gatwick-shortcut > div {
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255, 188, 45, 1) 0px,
+            rgba(255, 174, 20, 1) 1.1px,
+            transparent 1.4px
+        );
+
+    background-size: 4px 4px;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    filter:
+        drop-shadow(0 0 1px rgba(255,174,20,.7))
+        drop-shadow(0 0 4px rgba(255,174,20,.12));
+}
+
+.gatwick-plane {
+    font-size: clamp(32px, 3vw, 56px);
+}
+
+.gatwick-name {
+    font-size: clamp(25px, 2.2vw, 43px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.gatwick-label {
+    font-size: clamp(18px, 1.5vw, 29px);
+    white-space: nowrap;
+    text-align: center;
+}
+
+.gatwick-time {
+    font-size: clamp(30px, 3vw, 58px);
+    font-weight: 700;
+    text-align: center;
+}
+
+.gatwick-platform-label {
+    font-size: clamp(18px, 1.5vw, 29px);
+    text-align: right;
+}
+
+.gatwick-platform {
+    font-size: clamp(30px, 3vw, 58px);
+    font-weight: 700;
+    text-align: center;
+}
+
+.gatwick-status {
+    font-size: clamp(24px, 2.2vw, 43px);
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
 
 /* =========================================================
    AMBER LED EFFECT
@@ -257,7 +336,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid #777;
+    border-top: 1px solid #d59617;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -404,15 +483,28 @@ body {
                 <div class="expected">On time</div>
             </div>
 
-            <div class="service">
-                <div>15:00</div>
-                <div class="destination">Sevenoaks</div>
-                <div class="platform">6</div>
-                <div class="expected">On time</div>
-            </div>
-
         </div>
+<!-- GATWICK AIRPORT SHORTCUT -->
 
+<div class="gatwick-shortcut">
+
+    <div class="gatwick-plane">✈</div>
+
+    <div class="gatwick-name">
+        GATWICK AIRPORT
+    </div>
+
+    <div class="gatwick-label">
+        Next direct train
+    </div>
+
+    <div class="gatwick-time">
+        15:15
+    </div>
+
+    <div class="gatwick-platform-label">
+        Plat
+    </div>
     </main>
 
 
