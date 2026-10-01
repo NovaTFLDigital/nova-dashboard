@@ -182,6 +182,10 @@ body {
     line-height: 1;
 }
 
+.services .service:last-child {
+    border-bottom: 1px solid #555;
+}
+
 .destination {
     padding-left: 4px;
 }
@@ -206,8 +210,6 @@ body {
     align-items: center;
 
     padding: 0 3.5vw;
-
-   border-top: 1px solid #555;
 
     color: #f6ad16;
 }
@@ -244,10 +246,9 @@ body {
     white-space: nowrap;
 }
 
-.gatwick-label {
-    font-size: clamp(20px, 1.7vw, 33px);
-    font-weight: 600;
-    white-space: nowrap;
+.gatwick-platform {
+    font-size: clamp(30px, 3vw, 58px);
+    font-weight: 700;
     text-align: center;
 }
 
@@ -257,23 +258,13 @@ body {
     text-align: center;
 }
 
-.gatwick-platform-label {
-    font-size: clamp(20px, 1.7vw, 33px);
-    font-weight: 600;
-    text-align: center;
-}
-
-.gatwick-platform {
-    font-size: clamp(30px, 3vw, 58px);
-    font-weight: 700;
-    text-align: center;
-}
-
+.gatwick-label,
+.gatwick-platform-label,
 .gatwick-status {
     font-size: clamp(22px, 1.9vw, 37px);
     font-weight: 600;
-    text-align: center;
     white-space: nowrap;
+    text-align: center;
 }
 
 /* =========================================================
