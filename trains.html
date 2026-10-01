@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,16 @@
 
 <style>
 
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -25,6 +31,7 @@ body {
     color: #f5ad18;
 }
 
+
 /* =========================================================
    SCREEN
 ========================================================= */
@@ -32,8 +39,15 @@ body {
 .board {
     width: 100vw;
     height: 100vh;
+
     background:
-        radial-gradient(circle at 50% 0%, #151616 0%, #080909 42%, #030404 100%);
+        radial-gradient(
+            circle at 50% 0%,
+            #151616 0%,
+            #080909 42%,
+            #030404 100%
+        );
+
     display: flex;
     flex-direction: column;
 }
@@ -46,8 +60,10 @@ body {
 .topbar {
     height: 13vh;
     min-height: 110px;
+
     display: flex;
     align-items: center;
+
     padding: 0 4vw;
 }
 
@@ -65,9 +81,12 @@ body {
 .departures-header {
     height: 18vh;
     min-height: 145px;
+
     display: flex;
     align-items: center;
+
     padding: 0 4vw;
+
     border-bottom: 1px solid #686868;
 }
 
@@ -81,16 +100,16 @@ body {
     justify-content: center;
 
     padding-right: 35px;
+
     border-right: 1px solid #8b7550;
 
     color: #f5ad18;
 }
 
-.heading {
-    padding-left: 45px;
-}
 
-    .rail-dot-icon {
+/* DOT-MATRIX TRAIN ICON */
+
+.rail-dot-icon {
     width: 66px;
     height: 82px;
 
@@ -104,13 +123,15 @@ body {
 
     background-size: 4px 4px;
 
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect x='14' y='6' width='36' height='52' rx='9' fill='none' stroke='black' stroke-width='6'/%3E%3Crect x='20' y='14' width='24' height='18' rx='2' fill='black'/%3E%3Ccircle cx='23' cy='46' r='4' fill='black'/%3E%3Ccircle cx='41' cy='46' r='4' fill='black'/%3E%3Cpath d='M20 58 L13 72 M44 58 L51 72' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 68 H48' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+    -webkit-mask-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect x='14' y='6' width='36' height='52' rx='9' fill='none' stroke='black' stroke-width='6'/%3E%3Crect x='20' y='14' width='24' height='18' rx='2' fill='black'/%3E%3Ccircle cx='23' cy='46' r='4' fill='black'/%3E%3Ccircle cx='41' cy='46' r='4' fill='black'/%3E%3Cpath d='M20 58 L13 72 M44 58 L51 72' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 68 H48' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
 
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     -webkit-mask-size: contain;
 
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect x='14' y='6' width='36' height='52' rx='9' fill='none' stroke='black' stroke-width='6'/%3E%3Crect x='20' y='14' width='24' height='18' rx='2' fill='black'/%3E%3Ccircle cx='23' cy='46' r='4' fill='black'/%3E%3Ccircle cx='41' cy='46' r='4' fill='black'/%3E%3Cpath d='M20 58 L13 72 M44 58 L51 72' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 68 H48' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+    mask-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect x='14' y='6' width='36' height='52' rx='9' fill='none' stroke='black' stroke-width='6'/%3E%3Crect x='20' y='14' width='24' height='18' rx='2' fill='black'/%3E%3Ccircle cx='23' cy='46' r='4' fill='black'/%3E%3Ccircle cx='41' cy='46' r='4' fill='black'/%3E%3Cpath d='M20 58 L13 72 M44 58 L51 72' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 68 H48' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
 
     mask-repeat: no-repeat;
     mask-position: center;
@@ -120,20 +141,31 @@ body {
         drop-shadow(0 0 1px rgba(255,174,20,.7))
         drop-shadow(0 0 4px rgba(255,174,20,.12));
 }
+
+.heading {
+    padding-left: 45px;
+}
+
 .heading h1 {
     margin: 0;
+
     font-size: clamp(44px, 4.2vw, 82px);
     line-height: 0.95;
+
     letter-spacing: 5px;
     font-weight: 700;
+
     text-transform: uppercase;
 }
 
 .heading h2 {
     margin: 13px 0 0;
+
     font-size: clamp(24px, 2.2vw, 43px);
+
     letter-spacing: 5px;
     font-weight: 600;
+
     text-transform: uppercase;
 }
 
@@ -144,46 +176,74 @@ body {
 
 .departure-table {
     flex: 1;
+
     display: flex;
     flex-direction: column;
+
     min-height: 0;
 }
 
 .table-header,
 .service {
     display: grid;
-    grid-template-columns: 15% 47% 14% 24%;
+
+    grid-template-columns:
+        15%
+        47%
+        14%
+        24%;
+
     align-items: center;
+
     padding: 0 5vw;
 }
+
+
+/* TABLE TITLES */
 
 .table-header {
     height: 6vh;
     min-height: 52px;
+
     background: #151616;
-    border-bottom: 1px solid #555;
+
+    /* SAME AMBER SEPARATOR USED THROUGHOUT */
+    border-bottom: 1px solid #d59617;
+
     font-size: clamp(20px, 1.7vw, 34px);
     font-weight: bold;
+
     letter-spacing: 1px;
 }
 
+
+/* SERVICES */
+
 .services {
     flex: 1;
+
     display: flex;
     flex-direction: column;
 }
 
 .service {
     flex: 1;
+
     min-height: 0;
+
     border-bottom: 1px solid #242626;
+
     font-size: clamp(26px, 2.5vw, 49px);
     font-weight: bold;
+
     line-height: 1;
 }
 
+
+/* LAST TRAIN ROW = GATWICK SEPARATOR */
+
 .services .service:last-child {
-    border-bottom: 1px solid #6b541b;
+    border-bottom: 1px solid #d59617;
 }
 
 .destination {
@@ -197,6 +257,8 @@ body {
 .expected {
     padding-left: 25px;
 }
+
+
 /* =========================================================
    GATWICK AIRPORT SHORTCUT
 ========================================================= */
@@ -206,7 +268,16 @@ body {
     min-height: 72px;
 
     display: grid;
-    grid-template-columns: 6% 27% 18% 13% 6% 8% 22%;
+
+    grid-template-columns:
+        6%
+        27%
+        18%
+        13%
+        6%
+        8%
+        22%;
+
     align-items: center;
 
     padding: 0 3.5vw;
@@ -214,12 +285,15 @@ body {
     color: #f6ad16;
 }
 
+
+/* GATWICK DOT-MATRIX EFFECT */
+
 .gatwick-shortcut > div {
     background-image:
         radial-gradient(
             circle,
-            rgba(255, 188, 45, 1) 0px,
-            rgba(255, 174, 20, 1) 1.1px,
+            rgba(255,188,45,1) 0px,
+            rgba(255,174,20,1) 1.1px,
             transparent 1.4px
         );
 
@@ -241,20 +315,19 @@ body {
 
 .gatwick-name {
     font-size: clamp(25px, 2.2vw, 43px);
+
     font-weight: 700;
     letter-spacing: 2px;
+
     white-space: nowrap;
 }
 
+.gatwick-time,
 .gatwick-platform {
     font-size: clamp(30px, 3vw, 58px);
-    font-weight: 700;
-    text-align: center;
-}
 
-.gatwick-time {
-    font-size: clamp(30px, 3vw, 58px);
     font-weight: 700;
+
     text-align: center;
 }
 
@@ -262,13 +335,17 @@ body {
 .gatwick-platform-label,
 .gatwick-status {
     font-size: clamp(22px, 1.9vw, 37px);
+
     font-weight: 600;
+
     white-space: nowrap;
+
     text-align: center;
 }
 
+
 /* =========================================================
-   AMBER LED EFFECT
+   AMBER LED TEXT EFFECT
 ========================================================= */
 
 .led {
@@ -277,8 +354,8 @@ body {
     background-image:
         radial-gradient(
             circle,
-            rgba(255, 188, 45, 1) 0px,
-            rgba(255, 174, 20, 1) 1.1px,
+            rgba(255,188,45,1) 0px,
+            rgba(255,174,20,1) 1.1px,
             transparent 1.4px
         );
 
@@ -294,7 +371,8 @@ body {
         drop-shadow(0 0 4px rgba(255,174,20,.12));
 }
 
-/* LED EFFECT FOR EACH DEPARTURE CELL */
+
+/* LED EFFECT FOR INDIVIDUAL TRAIN CELLS */
 
 .service > div {
     color: #f6ad16;
@@ -302,8 +380,8 @@ body {
     background-image:
         radial-gradient(
             circle,
-            rgba(255, 188, 45, 1) 0px,
-            rgba(255, 174, 20, 1) 1.1px,
+            rgba(255,188,45,1) 0px,
+            rgba(255,174,20,1) 1.1px,
             transparent 1.4px
         );
 
@@ -318,6 +396,8 @@ body {
         drop-shadow(0 0 1px rgba(255,174,20,.7))
         drop-shadow(0 0 4px rgba(255,174,20,.12));
 }
+
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -325,54 +405,49 @@ body {
 .footer {
     height: 8vh;
     min-height: 65px;
+
     padding: 0 4vw;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid #6b541b;
+
+    /* SAME AMBER SEPARATOR USED THROUGHOUT */
+    border-top: 1px solid #d59617;
+
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .footer-note {
     color: #d59617;
+
     font-size: clamp(13px, 1.15vw, 22px);
 }
 
 .footer-right {
     display: flex;
     align-items: center;
+
     gap: 32px;
+
     color: #d59617;
+
     font-size: clamp(13px, 1.15vw, 22px);
 }
 
 .update-time {
     padding-left: 32px;
-    border-left: 1px solid rgba(213, 150, 23, 0.45);
+
+    border-left:
+        1px solid rgba(213,150,23,.45);
 }
 
-/* =========================================================
-   UNIFIED AMBER SEPARATOR LINES
-========================================================= */
 
-.table-header {
-    border-bottom: 1px solid #6b541b !important;
-}
-
-.services .service:last-child {
-    border-bottom: 1px solid #6b541b !important;
-}
-
-.footer {
-    border-top: 1px solid #6b541b !important;
-}
-    
 /* =========================================================
    SMALLER SCREENS
 ========================================================= */
 
-
-    @media (max-width: 1000px) {
+@media (max-width: 1000px) {
 
     .topbar {
         min-height: 90px;
@@ -389,7 +464,6 @@ body {
     .train-icon {
         width: 90px;
         min-width: 90px;
-        font-size: 55px;
     }
 
     .heading {
@@ -406,171 +480,365 @@ body {
 <div class="board">
 
 
-    <!-- NOVA LOGO -->
+    <!-- =====================================================
+         NOVA LOGO
+    ====================================================== -->
 
     <header class="topbar">
-        <img class="logo" src="nova-logo.jpg" alt="Nova London SW1">
+
+        <img
+            class="logo"
+            src="nova-logo.jpg"
+            alt="Nova London SW1"
+        >
+
     </header>
 
 
-    <!-- TITLE -->
+    <!-- =====================================================
+         TITLE
+    ====================================================== -->
 
     <section class="departures-header">
 
-<div class="train-icon">
-    <div class="rail-dot-icon" aria-hidden="true"></div>
-</div>
+        <div class="train-icon">
+            <div
+                class="rail-dot-icon"
+                aria-hidden="true">
+            </div>
+        </div>
 
         <div class="heading led">
+
             <h1>Departures</h1>
+
             <h2>London Victoria</h2>
+
         </div>
 
     </section>
 
 
-    <!-- DEPARTURES -->
+    <!-- =====================================================
+         DEPARTURES
+    ====================================================== -->
 
     <main class="departure-table">
 
+
+        <!-- COLUMN TITLES -->
+
         <div class="table-header led">
+
             <div>Due</div>
+
             <div>Destination</div>
-            <div style="text-align:center;">Plat</div>
-            <div style="padding-left:25px;">Expected</div>
-        </div>
 
-
-        <div class="services" id="services">
-
-            <div class="service">
-                <div>14:32</div>
-                <div class="destination">Orpington</div>
-                <div class="platform">5</div>
-                <div class="expected">On time</div>
+            <div style="text-align:center;">
+                Plat
             </div>
 
-            <div class="service">
-                <div>14:36</div>
-                <div class="destination">Brighton</div>
-                <div class="platform">16</div>
-                <div class="expected">On time</div>
-            </div>
-
-            <div class="service">
-                <div>14:40</div>
-                <div class="destination">Sutton</div>
-                <div class="platform">10</div>
-                <div class="expected">14:44</div>
-            </div>
-
-            <div class="service">
-                <div>14:44</div>
-                <div class="destination">Ramsgate</div>
-                <div class="platform">3</div>
-                <div class="expected">On time</div>
-            </div>
-
-            <div class="service">
-                <div>14:48</div>
-                <div class="destination">East Grinstead</div>
-                <div class="platform">18</div>
-                <div class="expected">Cancelled</div>
-            </div>
-
-            <div class="service">
-                <div>14:52</div>
-                <div class="destination">Dorking</div>
-                <div class="platform">11</div>
-                <div class="expected">On time</div>
-            </div>
-
-            <div class="service">
-                <div>14:56</div>
-                <div class="destination">Littlehampton</div>
-                <div class="platform">15</div>
-                <div class="expected">On time</div>
+            <div style="padding-left:25px;">
+                Expected
             </div>
 
         </div>
-<!-- GATWICK AIRPORT SHORTCUT -->
-
-<div class="gatwick-shortcut">
-
-    <div class="gatwick-plane">✈</div>
-
-    <div class="gatwick-name">
-        GATWICK AIRPORT
-    </div>
-
-    <div class="gatwick-label">
-        Next direct train
-    </div>
-
-    <div class="gatwick-time">
-        15:15
-    </div>
-
-    <div class="gatwick-platform-label">
-        Plat
-    </div>
-
-    <div class="gatwick-platform">
-        13
-    </div>
-
-    <div class="gatwick-status">
-        On time
-    </div>
-
-</div>
-
-</main>
 
 
-    <!-- FOOTER -->
+        <!-- TRAIN SERVICES -->
+
+        <div
+            class="services"
+            id="services"
+        >
+
+
+            <div class="service">
+
+                <div>
+                    14:32
+                </div>
+
+                <div class="destination">
+                    Orpington
+                </div>
+
+                <div class="platform">
+                    5
+                </div>
+
+                <div class="expected">
+                    On time
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div>
+                    14:36
+                </div>
+
+                <div class="destination">
+                    Brighton
+                </div>
+
+                <div class="platform">
+                    16
+                </div>
+
+                <div class="expected">
+                    On time
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div>
+                    14:40
+                </div>
+
+                <div class="destination">
+                    Sutton
+                </div>
+
+                <div class="platform">
+                    10
+                </div>
+
+                <div class="expected">
+                    14:44
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div>
+                    14:44
+                </div>
+
+                <div class="destination">
+                    Ramsgate
+                </div>
+
+                <div class="platform">
+                    3
+                </div>
+
+                <div class="expected">
+                    On time
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div>
+                    14:48
+                </div>
+
+                <div class="destination">
+                    East Grinstead
+                </div>
+
+                <div class="platform">
+                    18
+                </div>
+
+                <div class="expected">
+                    Cancelled
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div>
+                    14:52
+                </div>
+
+                <div class="destination">
+                    Dorking
+                </div>
+
+                <div class="platform">
+                    11
+                </div>
+
+                <div class="expected">
+                    On time
+                </div>
+
+            </div>
+
+
+            <div class="service">
+
+                <div>
+                    14:56
+                </div>
+
+                <div class="destination">
+                    Littlehampton
+                </div>
+
+                <div class="platform">
+                    15
+                </div>
+
+                <div class="expected">
+                    On time
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             GATWICK AIRPORT SHORTCUT
+        ================================================== -->
+
+        <div class="gatwick-shortcut">
+
+
+            <div class="gatwick-plane">
+                ✈
+            </div>
+
+
+            <div class="gatwick-name">
+                GATWICK AIRPORT
+            </div>
+
+
+            <div class="gatwick-label">
+                Next direct train
+            </div>
+
+
+            <div class="gatwick-time">
+                15:15
+            </div>
+
+
+            <div class="gatwick-platform-label">
+                Plat
+            </div>
+
+
+            <div class="gatwick-platform">
+                13
+            </div>
+
+
+            <div class="gatwick-status">
+                On time
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <footer class="footer">
 
- <div class="footer-note">
-        Next departures from London Victoria. Platforms may change.
-    </div>
 
-    <div class="footer-right">
-        <span>Live information provided by National Rail</span>
-        <span class="update-time">
-            Last updated <span id="lastUpdated">--:--</span>
-        </span>
-    </div>
-        
+        <div class="footer-note">
+
+            Next departures from London Victoria.
+            Platforms may change.
+
+        </div>
+
+
+        <div class="footer-right">
+
+
+            <span>
+                Live information provided by National Rail
+            </span>
+
+
+            <span class="update-time">
+
+                Last updated
+
+                <span id="lastUpdated">
+                    --:--
+                </span>
+
+            </span>
+
+
+        </div>
+
+
     </footer>
 
 
 </div>
 
+
+<!-- =========================================================
+     UPDATE TIMESTAMP
+========================================================= -->
+
 <script>
+
 function updateTimestamp() {
+
     const now = new Date();
 
-    const date = now.toLocaleDateString('en-GB', {
-        timeZone: 'Europe/London',
-        day: '2-digit',
-        month: 'short'
-    });
 
-    const time = now.toLocaleTimeString('en-GB', {
-        timeZone: 'Europe/London',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false
-    });
+    const date =
+        now.toLocaleDateString(
+            'en-GB',
+            {
+                timeZone: 'Europe/London',
+                day: '2-digit',
+                month: 'short'
+            }
+        );
 
-    document.getElementById('lastUpdated').textContent =
-        date + ' · ' + time;
+
+    const time =
+        now.toLocaleTimeString(
+            'en-GB',
+            {
+                timeZone: 'Europe/London',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            }
+        );
+
+
+    document
+        .getElementById('lastUpdated')
+        .textContent =
+            date + ' · ' + time;
 }
 
+
 updateTimestamp();
+
 </script>
-    
+
+
 </body>
 </html>
