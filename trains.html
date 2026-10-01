@@ -91,6 +91,36 @@ body {
     padding-left: 45px;
 }
 
+    .rail-dot-icon {
+    width: 66px;
+    height: 82px;
+
+    background-image:
+        radial-gradient(
+            circle,
+            #f6ad16 0px,
+            #f6ad16 1.1px,
+            transparent 1.4px
+        );
+
+    background-size: 4px 4px;
+
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect x='14' y='6' width='36' height='52' rx='9' fill='none' stroke='black' stroke-width='6'/%3E%3Crect x='20' y='14' width='24' height='18' rx='2' fill='black'/%3E%3Ccircle cx='23' cy='46' r='4' fill='black'/%3E%3Ccircle cx='41' cy='46' r='4' fill='black'/%3E%3Cpath d='M20 58 L13 72 M44 58 L51 72' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 68 H48' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 80'%3E%3Crect x='14' y='6' width='36' height='52' rx='9' fill='none' stroke='black' stroke-width='6'/%3E%3Crect x='20' y='14' width='24' height='18' rx='2' fill='black'/%3E%3Ccircle cx='23' cy='46' r='4' fill='black'/%3E%3Ccircle cx='41' cy='46' r='4' fill='black'/%3E%3Cpath d='M20 58 L13 72 M44 58 L51 72' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M16 68 H48' fill='none' stroke='black' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+
+    filter:
+        drop-shadow(0 0 1px rgba(255,174,20,.7))
+        drop-shadow(0 0 4px rgba(255,174,20,.12));
+}
 .heading h1 {
     margin: 0;
     font-size: clamp(44px, 4.2vw, 82px);
@@ -301,24 +331,7 @@ body {
     <section class="departures-header">
 
 <div class="train-icon">
-    <svg class="rail-icon" viewBox="0 0 64 80" aria-hidden="true">
-        <rect x="14" y="6" width="36" height="52" rx="9"
-              fill="none" stroke="currentColor" stroke-width="5"/>
-
-        <rect x="20" y="14" width="24" height="18" rx="2"
-              fill="currentColor"/>
-
-        <circle cx="23" cy="46" r="4" fill="currentColor"/>
-        <circle cx="41" cy="46" r="4" fill="currentColor"/>
-
-        <path d="M20 58 L13 72 M44 58 L51 72"
-              fill="none" stroke="currentColor" stroke-width="5"
-              stroke-linecap="round"/>
-
-        <path d="M16 68 H48"
-              fill="none" stroke="currentColor" stroke-width="5"
-              stroke-linecap="round"/>
-    </svg>
+    <div class="rail-dot-icon" aria-hidden="true"></div>
 </div>
 
         <div class="heading led">
