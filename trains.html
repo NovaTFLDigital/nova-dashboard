@@ -237,10 +237,17 @@ body {
     font-size: clamp(13px, 1.15vw, 22px);
 }
 
-.attribution {
-    color: #d8d8d8;
-    font-size: clamp(12px, 1vw, 19px);
-    opacity: .85;
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    color: #d59617;
+    font-size: clamp(13px, 1.15vw, 22px);
+}
+
+.update-time {
+    padding-left: 32px;
+    border-left: 1px solid rgba(213, 150, 23, 0.45);
 }
 
 
@@ -401,14 +408,17 @@ body {
 
     <footer class="footer">
 
-        <div class="footer-note">
-            Next departures from London Victoria. Platforms may change.
-        </div>
+ <div class="footer-note">
+        Next departures from London Victoria. Platforms may change.
+    </div>
 
-        <div class="attribution">
-            Live information provided by National Rail
-        </div>
-
+    <div class="footer-right">
+        <span>Live information provided by National Rail</span>
+        <span class="update-time">
+            Last updated <span id="lastUpdated">--:--</span>
+        </span>
+    </div>
+        
     </footer>
 
 
